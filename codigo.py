@@ -61,4 +61,4 @@ else:
 
     st.markdown('---')
     st.subheader('Total de Despesas do Partido')
-    st.markdown(f'<h)
+    st.markdown(f'<h')
