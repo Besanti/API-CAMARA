@@ -13,7 +13,7 @@ def obterGastosDeputado(idDeputado):
     url = 'https://dadosabertos.camara.leg.br/api/v2/deputados?idLegislatura' + str(idDeputado) + '/despesas'
     r = requests.get(url)
     gastos = r.json()['dados']
-    total_gastos = sum(gasto['valorLiquido'] for gasto in gastos)
+    total_gastos = sum(gasto['despesas'] for gasto in gastos)
     return total_gastos
 
 def main():
