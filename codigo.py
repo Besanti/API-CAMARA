@@ -26,7 +26,7 @@ df = baixaDeputados(idLegislatura)
 df['gastos'] = df['id'].apply(obterGastosDeputado)
 
 st.header('Lista de deputados')
-st.write(df)
+st.dataframe(df)
 st.download_button('Baixar lista de deputados', data=df.to_csv(), file_name='deputados.csv', mime='text/csv')
 
 st.header('Gráficos')
