@@ -59,6 +59,6 @@ else:
             st.markdown(f'<h2 style="color:red;">Total de Despesas do Deputado: R${total_despesas_deputado:.2f}</h2>', unsafe_allow_html=True)
             total_despesas_partido += total_despesas_deputado
 
-    st.markdown('---')
+    st.markdown((f'<h2 style="color:red;">Total de Despesas do partido: R${total_despesas_partido:.2f}</h2>)
     st.subheader('Total de Despesas do Partido')
    
