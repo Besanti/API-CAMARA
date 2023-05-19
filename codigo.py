@@ -3,14 +3,14 @@ import pandas as pd
 import requests
 
 def baixaDeputados(idLegislatura):
-    url = 'https://dadosabertos.camara.leg.br/api/v2/deputados?idLegislatura' + str(idLegislatura)
+    url = 'https://dadosabertos.camara.leg.br/api/v2/deputados?idLegislatura' + {id}
     r = requests.get(url)
     deputados = r.json()['dados']
     df = pd.DataFrame(deputados)
     return df
 
 def obterGastosDeputado(idDeputado):
-    url = 'https://dadosabertos.camara.leg.br/api/v2/deputados?idLegislatura' + str(idDeputado) + '/despesas'
+    url = 'https://dadosabertos.camara.leg.br/api/v2/deputados?idLegislatura' + {id} + '/despesas'
     r = requests.get(url)
     gastos = r.json()['dados']
     total_gastos = sum(gasto['despesas'] for gasto in gastos)
