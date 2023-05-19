@@ -9,11 +9,21 @@ def baixaDeputados(idLegislatura):
     df = pd.DataFrame(deputados)
     return df
 
+def obterGastosDeputado(idDeputado):
+    url = 'https://dadosabertos.camara.leg.br/api/v2/deputados/' + str(idDeputado) + '/despesas?ordem=DESC&ordenarPor=ano'
+    r = requests.get(url)
+    gastos = r.json()['dados']
+    total_gastos = sum(gasto['valorLiquido'] for gasto in gastos)
+    return total_gastos
+
 st.title('Lista de Deputados em Exercício')
 
 idLegislatura = st.slider('Escolha de qual legislatura você quer a lista de deputados', 50, 57, 57)
 
 df = baixaDeputados(idLegislatura)
+
+# Adiciona coluna de gastos
+df['gastos'] = df['id'].apply(obterGastosDeputado)
 
 st.header('Lista de deputados')
 st.write(df)
@@ -43,3 +53,5 @@ else:
             st.write('UF: ' + linha['siglaUf'])
             st.write('ID: ' + str(linha['id']))
             st.write('Email: ' + str(linha['email']))
+            st.write('Gastos: R$ ' + str(linha['gastos']))
+
