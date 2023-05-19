@@ -42,7 +42,7 @@ st.markdown('---')
 if df2.empty:
     st.subheader(':no_entry_sign: Sem deputados nesse estado filiados a esse partido! :crying_cat_face:')
 else:
-    total_despesas = 0
+    total_despesas_partido = 0
     for index, linha in df2.iterrows():
         with st.expander(linha['nome']):
             st.image(linha['urlFoto'], width=130)
@@ -55,8 +55,9 @@ else:
             st.write('Despesas:')
             despesas_df = obterDespesasDeputado(linha['id'])
             st.write(despesas_df)
-            total_despesas += despesas_df['valorLiquido'].sum()
+            total_despesas_deputado = despesas_df['valorLiquido'].sum()
+            st.markdown(f'<h2 style="color:red;">Total de Despesas do Deputado: R${total_despesas_deputado:.2f}</h2>', unsafe_allow_html=True)
+            total_despesas_partido += total_despesas_deputado
 
     st.markdown('---')
-    st.subheader('Total de Despesas')
-    st.markdown(f'<h1 style="color:red;">R${total_despesas:.2f}</h1>', unsafe_allow_html=True)
+    st
