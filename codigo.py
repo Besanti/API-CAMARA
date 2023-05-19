@@ -60,4 +60,5 @@ else:
             total_despesas_partido += total_despesas_deputado
 
     st.markdown('---')
-    st
+    st.subheader('Total de Despesas do Partido')
+    st.markdown(f'<h
