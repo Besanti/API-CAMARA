@@ -16,7 +16,7 @@ def obterDespesasDeputado(idDeputado):
     df = pd.DataFrame(despesas)
     return df
 
-st.title('Lista de Deputados em Exercício')
+st.title('Lista de Deputados em Exercício e Suas Despesas')
 
 idLegislatura =  57
 df = baixaDeputados(idLegislatura)
