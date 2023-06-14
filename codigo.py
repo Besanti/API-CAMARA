@@ -55,7 +55,7 @@ else:
             st.write('Despesas:')
             despesas_df = obterDespesasDeputado(linha['id'])
             st.write(despesas_df)
-            ps.pyplot(despesas_df["valorLiquido].plt(kind='bar'))
+            ps.pyplot(despesas_df["valorLiquido].plot(kind='bar'))
             total_despesas_deputado = despesas_df['valorLiquido'].sum()
             st.markdown(f'<h2 style="color:red;">Total de Despesas do Deputado: R${total_despesas_deputado:.2f}</h2>', unsafe_allow_html=True)
             total_despesas_partido += total_despesas_deputado
