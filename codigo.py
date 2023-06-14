@@ -55,8 +55,9 @@ else:
             st.write('---')
             st.write('Despesas:')
             despesas_df = obterDespesasDeputado(linha['id'])
+            
             chart = alt.Chart(despesas_df).mark_bar().encode(
-                x='index',
+                x='tipoDespesa',
                 y='valorLiquido'
             ).properties(
                 width=400,
