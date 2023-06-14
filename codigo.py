@@ -56,12 +56,20 @@ else:
             st.write('---')
             st.write('Despesas:')
             despesas_df = obterDespesasDeputado(linha['id'])
-            st.write(despesas_df)
-            fig, ax = plt.subplots()
-            ax.bar(despesas_df.index, despesas_df['valorLiquido'])
-            ax.set_xlabel('Índice')
-            ax.set_ylabel('Valor Líquido')
-            st.pyplot(fig)
+            chart = alt.Chart(despesas_df).mark_bar().encode(
+                x='index',
+                y='valorLiquido'
+            ).properties(
+                width=400,
+                height=300
+            ).configure_axis(
+                labelFontSize=12,
+                titleFontSize=14
+            ).configure_title(
+                fontSize=16
+            )
+
+            st.altair_chart(chart)
             
             total_despesas_deputado = despesas_df['valorLiquido'].sum()
             st.markdown(f'<h2 style="color:red;">Total de Despesas do Deputado: R${total_despesas_deputado:.2f}</h2>', unsafe_allow_html=True)
