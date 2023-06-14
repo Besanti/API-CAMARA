@@ -1,4 +1,4 @@
-pip install matplotlib
+streamlit run --global.deps matplotlib codigo.py
 import streamlit as st
 import pandas as pd
 import requests
